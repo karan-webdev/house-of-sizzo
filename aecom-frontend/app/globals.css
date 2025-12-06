@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Domaine Display';
+  src: url('/fonts/DomaineDisplay-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gill Sans';
+  src: url('/fonts/GillSans.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'Gill Sans', sans-serif;
+}
+
+/* Apply globally */
+h1, h2, h3, h4, h5, h6, .site-heading {
+  font-family: 'Domaine Display';
+}
+
+p, span, li, a {
+  font-family: 'Gill Sans';;
+}
+

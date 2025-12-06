@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_shipping_options",
+  "info": {
+    "displayName": "shippingOptions"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "deliveryTime": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

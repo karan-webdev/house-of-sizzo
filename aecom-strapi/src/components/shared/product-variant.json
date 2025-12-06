@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_shared_product_variants",
+  "info": {
+    "displayName": "Product Variant",
+    "icon": "address-book"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string",
+      "unique": true
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "stock": {
+      "type": "integer"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "size": {
+      "type": "string"
+    },
+    "colour": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

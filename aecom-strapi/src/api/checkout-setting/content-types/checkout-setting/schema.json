@@ -1,0 +1,33 @@
+{
+  "kind": "singleType",
+  "collectionName": "checkout_settings",
+  "info": {
+    "singularName": "checkout-setting",
+    "pluralName": "checkout-settings",
+    "displayName": "Checkout Settings"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "paymentMethods": {
+      "type": "enumeration",
+      "enum": [
+        "stripe",
+        "paypal"
+      ]
+    },
+    "taxRate": {
+      "type": "decimal"
+    },
+    "shippingOptions": {
+      "type": "component",
+      "component": "shared.shipping-options",
+      "repeatable": true
+    },
+    "currency": {
+      "type": "string"
+    }
+  }
+}
