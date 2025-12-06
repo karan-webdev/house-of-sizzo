@@ -1,7 +1,7 @@
 export async function getHomeBanner() {
   try {
     const res = await fetch(
-      "http://localhost:1337/api/homepage-banner?populate=homepageBanner",
+      "https://leading-pleasure-696b0f5d25.strapiapp.com/api/homepage-banner?populate=homepageBanner",
       { cache: "no-store" }
     );
 
@@ -13,7 +13,7 @@ export async function getHomeBanner() {
     if (!imageData) return null;
 
     // Determine best quality: original > large > medium
-    const base = "http://localhost:1337";
+    const base = "https://leading-pleasure-696b0f5d25.strapiapp.com";
 
     const homepageBannerUrl =
       imageData.url

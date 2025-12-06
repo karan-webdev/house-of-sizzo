@@ -1,6 +1,6 @@
 export async function getSiteSettings() {
   const res = await fetch(
-    "http://localhost:1337/api/site-setting?populate=logo&populate=favicon",
+    "https://leading-pleasure-696b0f5d25.strapiapp.com/api/site-setting?populate=logo&populate=favicon",
     { cache: "no-store" }
   );
 
@@ -18,7 +18,7 @@ export async function getSiteSettings() {
 
   return {
     siteName: siteName || "YourStore",
-    logo: logo?.url ? "http://localhost:1337" + logo.url : null,
-    favicon: favicon?.url ? "http://localhost:1337" + favicon.url : null,
+    logo: logo?.url ? "https://leading-pleasure-696b0f5d25.strapiapp.com" + logo.url : null,
+    favicon: favicon?.url ? "https://leading-pleasure-696b0f5d25.strapiapp.com" + favicon.url : null,
   };
 }

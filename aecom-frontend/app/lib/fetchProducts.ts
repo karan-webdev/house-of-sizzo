@@ -34,13 +34,13 @@ export const fetchProducts = async (): Promise<Product[]> => {
     do {
       // Fetch main product data
       const resProducts = await fetch(
-        `http://localhost:1337/api/products?populate=*&pagination[page]=${page}&pagination[pageSize]=25`
+        `https://leading-pleasure-696b0f5d25.strapiapp.com/api/products?populate=*&pagination[page]=${page}&pagination[pageSize]=25`
       );
       const productsData = await resProducts.json();
 
       // Fetch variant data separately to get images
       const resVariants = await fetch(
-        `http://localhost:1337/api/products?populate[0]=variants&populate[1]=variants.images&pagination[page]=${page}&pagination[pageSize]=25`
+        `https://leading-pleasure-696b0f5d25.strapiapp.com/api/products?populate[0]=variants&populate[1]=variants.images&pagination[page]=${page}&pagination[pageSize]=25`
       );
       const variantsData = await resVariants.json();
 
