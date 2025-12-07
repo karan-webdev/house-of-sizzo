@@ -40,11 +40,9 @@ export default function ProductPage() {
 
   const [quantity, setQuantity] = useState(1);
 
-  // Get cart quantity for currently selected variant
   const cartQuantity = selectedVariant ? getCartItemQty(product?.id || 0, selectedVariant.id) : 0;
   const isInCart = cartQuantity > 0;
 
-  // Sync quantity with cart when variant changes
   useEffect(() => {
     if (selectedVariant && product) {
       const qty = getCartItemQty(product.id, selectedVariant.id);
@@ -62,12 +60,12 @@ export default function ProductPage() {
 
         do {
           const resProducts = await fetch(
-            `http://localhost:1337/api/products?populate=*&pagination[page]=${page}&pagination[pageSize]=50`
+            `https://leading-pleasure-696b0f5d25.strapiapp.com/api/products?populate=*&pagination[page]=${page}&pagination[pageSize]=50`
           );
           const productsData = await resProducts.json();
 
           const resVariants = await fetch(
-            `http://localhost:1337/api/products?populate[0]=variants&populate[1]=variants.images&pagination[page]=${page}&pagination[pageSize]=50`
+            `https://leading-pleasure-696b0f5d25.strapiapp.com/api/products?populate[0]=variants&populate[1]=variants.images&pagination[page]=${page}&pagination[pageSize]=50`
           );
           const variantsData = await resVariants.json();
 
@@ -99,7 +97,7 @@ export default function ProductPage() {
                 id: img.id,
                 url: img.url?.startsWith("http")
                   ? img.url
-                  : `http://localhost:1337${img.url || ''}`,
+                  : `https://leading-pleasure-696b0f5d25.strapiapp.com${img.url || ''}`,
                 alternativeText: img.alternativeText || "",
               }));
             } else if (v.images?.data) {
@@ -107,7 +105,7 @@ export default function ProductPage() {
                 id: img.id,
                 url: img.attributes.url.startsWith("http")
                   ? img.attributes.url
-                  : `http://localhost:1337${img.attributes.url}`,
+                  : `https://leading-pleasure-696b0f5d25.strapiapp.com${img.attributes.url}`,
                 alternativeText: img.attributes.alternativeText || "",
               }));
             }
@@ -192,7 +190,6 @@ export default function ProductPage() {
   const handleVariantClick = (variant: ProductVariant) => {
     setSelectedVariant(variant);
     
-    // Switch to the first image of this variant
     if (variant.images && variant.images.length > 0) {
       setMainImage({
         url: variant.images[0].url,
@@ -200,7 +197,6 @@ export default function ProductPage() {
       });
     }
     
-    // Update quantity to match cart for this variant
     const qty = getCartItemQty(product.id, variant.id);
     setQuantity(qty > 0 ? qty : 1);
   };
@@ -229,7 +225,6 @@ export default function ProductPage() {
       <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* IMAGE SECTION WITH SLIDER */}
         <div className="flex flex-col space-y-4">
           {mainImage ? (
             <img
@@ -259,7 +254,6 @@ export default function ProductPage() {
           )}
         </div>
 
-        {/* PRODUCT INFO */}
         <div className="flex flex-col justify-between">
           <div className="space-y-4">
             <p className="text-gray-700">{product.description}</p>
@@ -271,7 +265,6 @@ export default function ProductPage() {
             )}
           </div>
 
-          {/* VARIANTS SELECTION */}
           {product.variants.length > 0 && (
             <div className="mt-6">
               <h3 className="font-semibold mb-3">Select Variant:</h3>
@@ -318,7 +311,6 @@ export default function ProductPage() {
             </div>
           )}
 
-          {/* QUANTITY SELECTOR */}
           <div className="flex items-center gap-4 mt-6">
             <span className="font-semibold">Quantity:</span>
             <button
@@ -336,15 +328,14 @@ export default function ProductPage() {
             </button>
           </div>
 
-          {/* ADD TO CART BUTTON */}
           <button
             disabled={isInCart}
             onClick={handleAddToCart}
             className={`mt-6 w-full py-3 rounded-lg text-white font-semibold transition-all
               ${isInCart 
                 ? "bg-gray-400 cursor-not-allowed" 
-                : "bg-[#8499b8] hover:bg-[#6f86a4] cursor-pointer"}`
-              }>
+                : "bg-[#8499b8] hover:bg-[#6f86a4] cursor-pointer"}`}
+          >
             {isInCart ? "✓ Item Added to Cart" : "Add to Cart"}
           </button>
         </div>

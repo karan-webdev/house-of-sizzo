@@ -16,7 +16,7 @@ export default function HomePage() {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:1337/api/products?populate=images") // adjust URL if needed
+    fetch("https://leading-pleasure-696b0f5d25.strapiapp.com/api/products?populate=images") // adjust URL if needed
       .then((res) => res.json())
       .then((data) => setProducts(data.data.map((item: any) => ({
         id: item.id,

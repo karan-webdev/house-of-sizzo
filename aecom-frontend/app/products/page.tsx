@@ -231,7 +231,7 @@ const ProductsPage: React.FC = () => {
                         src={
                           product.images[0].url.startsWith('http')
                             ? product.images[0].url
-                            : `http://localhost:1337${product.images[0].url}`
+                            : `https://leading-pleasure-696b0f5d25.strapiapp.com${product.images[0].url}`
                         }
                         alt={product.images[0].alternativeText || product.title}
                         className="w-full h-full object-cover"
