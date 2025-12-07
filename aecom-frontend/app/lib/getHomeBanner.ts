@@ -1,7 +1,9 @@
+const STRAPI_BASE = "https://leading-pleasure-696b0f5d25.strapiapp.com";
+
 export async function getHomeBanner() {
   try {
     const res = await fetch(
-      "https://leading-pleasure-696b0f5d25.strapiapp.com/api/homepage-banner?populate=homepageBanner",
+      `${STRAPI_BASE}/api/homepage-banner?populate=homepageBanner`,
       { cache: "no-store" }
     );
 
@@ -12,17 +14,15 @@ export async function getHomeBanner() {
     const imageData = attrs.homepageBanner;
     if (!imageData) return null;
 
-    // Determine best quality: original > large > medium
-    const base = "https://leading-pleasure-696b0f5d25.strapiapp.com";
-
-    const homepageBannerUrl =
-      imageData.url
-        ? base + imageData.url // ORIGINAL (best)
-        : imageData.formats?.large?.url
-        ? base + imageData.formats.large.url
-        : imageData.formats?.medium?.url
-        ? base + imageData.formats.medium.url
-        : null;
+    const homepageBannerUrl = imageData.url?.startsWith('http')
+      ? imageData.url
+      : imageData.url
+      ? `${STRAPI_BASE}${imageData.url}`
+      : imageData.formats?.large?.url
+      ? `${STRAPI_BASE}${imageData.formats.large.url}`
+      : imageData.formats?.medium?.url
+      ? `${STRAPI_BASE}${imageData.formats.medium.url}`
+      : null;
 
     return {
       bannerText: attrs.bannerText || null,
