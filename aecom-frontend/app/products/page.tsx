@@ -67,7 +67,7 @@ const ProductsPage: React.FC = () => {
   // Filter products
   useEffect(() => {
     let result = products.filter(product => {
-        // @ts-ignore
+      // @ts-ignore
       const matchesCategory = filters.category ? product.category?.name === filters.category : true;
       const matchesMaterial = filters.material ? product.material === filters.material : true;
       const matchesColor = filters.color
@@ -100,7 +100,7 @@ const ProductsPage: React.FC = () => {
   const colors = Array.from(
     new Set(
       products
-      // @ts-ignore
+        // @ts-ignore
         .filter(p => (filters.category ? p.category?.name === filters.category : true))
         .flatMap(p => p.variants.map(v => v.colour))
         .filter(Boolean)
@@ -212,7 +212,7 @@ const ProductsPage: React.FC = () => {
 
         {/* PRODUCT GRID */}
         <div className="flex-1">
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[1fr] items-start">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 auto-rows-[1fr] items-start">
             {filteredProducts.length === 0 ? (
               <p className="col-span-full text-center text-gray-500 mt-10">
                 Oops! No products match your filters.
@@ -225,7 +225,7 @@ const ProductsPage: React.FC = () => {
                   onClick={() => goToProduct(product)}
                 >
                   {/* Image */}
-                  <div className="w-full h-[300px] bg-gray-100 flex items-center justify-center overflow-hidden">
+                  <div className="w-full h-[180px] sm:h-[220px] md:h-[260px] lg:h-[300px] bg-gray-100 flex items-center justify-center overflow-hidden">
                     {product.images.length ? (
                       <img
                         src={
@@ -244,7 +244,7 @@ const ProductsPage: React.FC = () => {
                   {/* Content */}
                   <div className="p-4 flex flex-col flex-grow">
                     <h2
-                    // @ts-ignore
+                      // @ts-ignore
                       ref={el => (titleRefs.current[idx] = el)}
                       className="text-lg font-semibold line-clamp-2 transition-colors group-hover:text-[#8499b8]"
                       style={{ minHeight: maxTitleHeight ? `${maxTitleHeight}px` : 'auto' }}
