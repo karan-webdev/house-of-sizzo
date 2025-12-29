@@ -226,9 +226,9 @@ export async function POST(req: NextRequest) {
     console.log("✅ Order created with ID:", order.data.id);
 
     // Reduce stock for all variants
-    for (const p of productsWithVariants) {
-      await reduceVariantStock(p.variant.sku, p.quantity);
-    }
+    // for (const p of productsWithVariants) {
+    //   await reduceVariantStock(p.variant.sku, p.quantity);
+    // }
 
     console.log("✅ Order processing completed successfully!");
     return NextResponse.json({ received: true, orderId: order.data.id });
